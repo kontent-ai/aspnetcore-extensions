@@ -1,5 +1,0 @@
-C:\Users\petrs\Documents\GitHub\kontent-boilerplate-net\Kentico.Kontent.AspNetCore\bin\Debug\netstandard2.0\Kentico.Kontent.AspNetCore.deps.json
-C:\Users\petrs\Documents\GitHub\kontent-boilerplate-net\Kentico.Kontent.AspNetCore\bin\Debug\netstandard2.0\Kentico.Kontent.AspNetCore.dll
-C:\Users\petrs\Documents\GitHub\kontent-boilerplate-net\Kentico.Kontent.AspNetCore\obj\Debug\netstandard2.0\Kentico.Kontent.AspNetCore.csprojAssemblyReference.cache
-C:\Users\petrs\Documents\GitHub\kontent-boilerplate-net\Kentico.Kontent.AspNetCore\obj\Debug\netstandard2.0\Kentico.Kontent.AspNetCore.AssemblyInfoInputs.cache
-C:\Users\petrs\Documents\GitHub\kontent-boilerplate-net\Kentico.Kontent.AspNetCore\obj\Debug\netstandard2.0\Kentico.Kontent.AspNetCore.AssemblyInfo.cs
