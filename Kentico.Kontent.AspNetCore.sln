@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kentico.Kontent.AspNetCore", "Kentico.Kontent.AspNetCore\Kentico.Kontent.AspNetCore.csproj", "{7C996EEF-91B2-4DD3-9550-FA978667D7EF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7C996EEF-91B2-4DD3-9550-FA978667D7EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C996EEF-91B2-4DD3-9550-FA978667D7EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C996EEF-91B2-4DD3-9550-FA978667D7EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C996EEF-91B2-4DD3-9550-FA978667D7EF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6AD34E9B-CE38-4B5D-83D7-BB30C227FDED}
+	EndGlobalSection
+EndGlobal
