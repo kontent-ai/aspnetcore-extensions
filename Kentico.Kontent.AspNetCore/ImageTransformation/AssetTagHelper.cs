@@ -89,12 +89,12 @@ namespace Kentico.Kontent.AspNetCore.ImageTransformation
 
             if (width?.Value != null)
             {
-                imageUrlBuilder = imageUrlBuilder.WithWidth(Convert.ToDouble(width.Value));
+                imageUrlBuilder = imageUrlBuilder.WithWidth(Convert.ToDouble(width.Value.ToString()));
             }
 
             if (height?.Value != null)
             {
-                imageUrlBuilder = imageUrlBuilder.WithHeight(Convert.ToDouble(height.Value));
+                imageUrlBuilder = imageUrlBuilder.WithHeight(Convert.ToDouble(height.Value.ToString()));
             }
 
             var image = new TagBuilder("img");
