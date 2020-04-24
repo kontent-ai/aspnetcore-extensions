@@ -61,17 +61,10 @@ namespace Kentico.Kontent.AspNetCore.ImageTransformation
         }
 
         /// <summary>
-        /// Default constructor.
-        /// </summary>
-        public AssetTagHelper()
-        {
-        }
-
-        /// <summary>
         /// Constructor that allows to set global the image transformation behavior.
         /// </summary>
         /// <param name="imageTransformationOption">An instance of a configuration object allowing to adjust the image transformation behavior.</param>
-        public AssetTagHelper(IOptions<ImageTransformationOptions> imageTransformationOption) : this()
+        public AssetTagHelper(IOptions<ImageTransformationOptions> imageTransformationOption = null)
         {
             ImageTransformationOptions = imageTransformationOption;
         }
