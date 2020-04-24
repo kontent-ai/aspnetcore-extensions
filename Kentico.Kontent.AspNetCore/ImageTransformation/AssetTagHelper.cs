@@ -43,7 +43,7 @@ namespace Kentico.Kontent.AspNetCore.ImageTransformation
         /// The last parameter of the sizes attribute of an image.
         /// </summary>
         [HtmlAttributeName("default-width")]
-        public int DefaultWidth { get; set; }
+        public int DefaultWidth { get; set; } = 300;
 
         /// <summary>
         /// Widths in which a given image is available. This property is used to generate the resulting srcset. This can also be set globally using <see cref="ImageTransformationOptions"/>.
@@ -89,12 +89,12 @@ namespace Kentico.Kontent.AspNetCore.ImageTransformation
 
             if (width?.Value != null)
             {
-                imageUrlBuilder = imageUrlBuilder.WithWidth(Convert.ToDouble(width));
+                imageUrlBuilder = imageUrlBuilder.WithWidth(Convert.ToDouble(width.Value));
             }
 
             if (height?.Value != null)
             {
-                imageUrlBuilder = imageUrlBuilder.WithHeight(Convert.ToDouble(height));
+                imageUrlBuilder = imageUrlBuilder.WithHeight(Convert.ToDouble(height.Value));
             }
 
             var image = new TagBuilder("img");
