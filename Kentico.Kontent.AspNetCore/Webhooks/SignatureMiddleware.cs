@@ -10,18 +10,35 @@ using Microsoft.Extensions.Options;
 
 namespace Kentico.Kontent.AspNetCore.Middleware.Webhook
 {
+    /// <summary>
+    /// Verifies signatures of Kentico Kontent webhooks.
+    /// </summary>
     public class SignatureMiddleware
     {
         private readonly RequestDelegate _next;
 
+        /// <summary>
+        /// A configuration object that allows to adjust the Kentico Kontent webhook behavior.
+        /// It contains a webhook secret used for signature validation.
+        /// </summary>
         public IOptions<WebhookOptions> WebhookOptions { get; }
 
+        /// <summary>
+        /// Creates an instance of the <see cref="SignatureMiddleware"/>.
+        /// </summary>
+        /// <param name="next">The next middleware in the pipeline.</param>
+        /// <param name="webhookOptions">A configuration object that allows to adjust the Kentico Kontent webhook behavior.</param>
         public SignatureMiddleware(RequestDelegate next, IOptions<WebhookOptions> webhookOptions)
         {
             _next = next;
             WebhookOptions = webhookOptions;
         }
 
+        /// <summary>
+        /// Processes the request to validate the webhook signature.
+        /// </summary>
+        /// <param name="httpContext">HTTP context whose request to inspect.</param>
+        /// <returns></returns>
         public async Task InvokeAsync(HttpContext httpContext)
         {
             var request = httpContext.Request;
