@@ -31,10 +31,15 @@ namespace Kentico.Kontent.AspNetCore.ImageTransformation
         /// <inheritdoc/>
         public override Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
         {
-            var sizes = context.Items["sizes"] as List<string>;
-            var maxWidth = MaxWidth.HasValue ? $"(max-width: {MaxWidth.Value}px) and " : string.Empty;
-            sizes.Add($"{maxWidth}(min-width: {MinWidth}px) {ImageWidth}px");
-
+            if (context.Items.ContainsKey(AssetTagHelper.SIZES_COLLECTION))
+            {
+                var sizes = context.Items[AssetTagHelper.SIZES_COLLECTION] as List<string>;
+                if (sizes != null)
+                {
+                    var maxWidth = MaxWidth.HasValue ? $"(max-width: {MaxWidth.Value}px) and " : string.Empty;
+                    sizes.Add($"{maxWidth}(min-width: {MinWidth}px) {ImageWidth}px");
+                }
+            }
             output.SuppressOutput();
 
             return Task.CompletedTask;

@@ -18,6 +18,8 @@ namespace Kentico.Kontent.AspNetCore.ImageTransformation
     [HtmlTargetElement("img-asset", Attributes = "asset")]
     public class AssetTagHelper : TagHelper
     {
+        internal const string SIZES_COLLECTION = "sizes";
+
         private int[] responsiveWidths;
 
         /// <summary>
@@ -81,15 +83,29 @@ namespace Kentico.Kontent.AspNetCore.ImageTransformation
             output.TagName = "img";
             output.TagMode = TagMode.SelfClosing;
 
+            var width = context.AllAttributes["width"];
+            var height = context.AllAttributes["height"];
+            var imageUrlBuilder = new ImageUrlBuilder(Asset.Url);
+
+            if (width?.Value != null)
+            {
+                imageUrlBuilder = imageUrlBuilder.WithWidth(Convert.ToDouble(width));
+            }
+
+            if (height?.Value != null)
+            {
+                imageUrlBuilder = imageUrlBuilder.WithHeight(Convert.ToDouble(height));
+            }
 
             var image = new TagBuilder("img");
 
-            if (ResponsiveWidths != null && ResponsiveWidths.Any() && context.AllAttributes["width"]?.Value == null && context.AllAttributes["height"]?.Value == null)
+            if (ResponsiveWidths != null && ResponsiveWidths.Any() && width?.Value == null && height?.Value == null)
             {
-                image.MergeAttribute("srcset", GenerateSrcsetValue(Asset.Url, ImageTransformationOptions.Value.ResponsiveWidths));
+                var srcSet = string.Join(",", ImageTransformationOptions.Value.ResponsiveWidths.Select(w => $"{imageUrlBuilder.WithWidth(Convert.ToDouble(w)).Url} {w}w"));
+                image.MergeAttribute("srcset", srcSet);
 
                 var sizes = new List<string>();
-                context.Items.Add("sizes", sizes);
+                context.Items.Add(SIZES_COLLECTION, sizes);
                 await output.GetChildContentAsync();
 
                 if (sizes != null)
@@ -99,16 +115,11 @@ namespace Kentico.Kontent.AspNetCore.ImageTransformation
                 }
             }
 
-            image.MergeAttribute("src", $"{new ImageUrlBuilder(Asset.Url).Url}");
+            image.MergeAttribute("src", $"{imageUrlBuilder.Url}");
             var titleToUse = Title ?? Asset.Description ?? string.Empty;
             image.MergeAttribute("alt", titleToUse);
             image.MergeAttribute("title", titleToUse);
             output.MergeAttributes(image);
-        }
-
-        private static string GenerateSrcsetValue(string imageUrl, int[] widths)
-        {
-            return string.Join(",", widths.Select(w => $"{new ImageUrlBuilder(imageUrl).WithWidth(Convert.ToDouble(w)).Url} {w}w"));
         }
     }
 }
