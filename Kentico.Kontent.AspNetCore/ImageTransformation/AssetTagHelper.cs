@@ -31,7 +31,7 @@ namespace Kentico.Kontent.AspNetCore.ImageTransformation
         /// Represents an asset object stored in Kentico Kontent. This property is mandatory in order to properly generate an img tag.
         /// </summary>
         [HtmlAttributeName("asset")]
-        public Asset Asset { get; set; }
+        public IImage Asset { get; set; }
 
         /// <summary>
         /// Allows overriding the alt and title attributes of an image.
