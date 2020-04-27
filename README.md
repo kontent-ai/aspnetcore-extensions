@@ -1,5 +1,6 @@
 [![NuGet](https://img.shields.io/nuget/v/Kentico.Kontent.AspNetCore.svg)](https://www.nuget.org/packages/Kentico.Kontent.AspNetCore/)
 [![AppVeyor](https://ci.appveyor.com/api/projects/status/5gm4u8267mabf8af/branch/master?svg=true)](https://ci.appveyor.com/project/kentico/kontent-aspnetcore)
+[![Stack Overflow](https://img.shields.io/badge/Stack%20Overflow-ASK%20NOW-FE7A16.svg?logo=stackoverflow&logoColor=white)](https://stackoverflow.com/tags/kentico-kontent)
 
 # ASP.NET Core extensions for Kentico Kontent apps.
 
@@ -55,3 +56,5 @@ This middleware verifies the `X-KC-Signature` header. Returns 401 response if th
 // Register webhook-based cache invalidation controller
 app.UseWebhookSignatureValidator(context => context.Request.Path.StartsWithSegments("/webhooks/webhooks", StringComparison.OrdinalIgnoreCase), Configuration.GetSection(nameof(WebhookOptions)));
 ```
+
+![Analytics](https://kentico-ga-beacon.azurewebsites.net/api/UA-69014260-4/Kentico/kontent-aspnetcore?pixel)
