@@ -18,6 +18,11 @@ Useful for rendering responsive images. Supports Assets and Inline images in ric
 ...
 ```
 
+**_ViewImports.cshtml**
+```razor
+@addTagHelper *, Kentico.Kontent.Boilerplate
+```
+
 **Startup.cs**
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -31,7 +36,7 @@ public void ConfigureServices(IServiceCollection services)
 ```
 
 **View.cshtml**
-```html
+```razor
 <img-asset asset="@Model.TeaserImage.First()" class="img-responsive" default-width="300">
   <media-condition min-width="769" image-width="300" />
   <media-condition min-width="330" max-width="768" image-width="689" />
