@@ -18,7 +18,7 @@ Useful for rendering responsive images. Supports Assets and Inline images in ric
 ...
 ```
 
-**Registration:**
+**Startup.cs**
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
@@ -30,7 +30,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-**Sample usage:**
+**View.cshtml**
 ```html
 <img-asset asset="@Model.TeaserImage.First()" class="img-responsive" default-width="300">
   <media-condition min-width="769" image-width="300" />
@@ -51,10 +51,13 @@ This middleware verifies the `X-KC-Signature` header. Returns 401 response if th
 ...
 ```
 
-**Registration:**
+**Startup.cs**
 ```csharp
-// Register webhook-based cache invalidation controller
-app.UseWebhookSignatureValidator(context => context.Request.Path.StartsWithSegments("/webhooks/webhooks", StringComparison.OrdinalIgnoreCase), Configuration.GetSection(nameof(WebhookOptions)));
+public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+{
+  // Register the validation middleware for any number of controllers that serve for processing webhooks
+  app.UseWebhookSignatureValidator(context => context.Request.Path.StartsWithSegments("/webhooks/webhooks", StringComparison.OrdinalIgnoreCase), Configuration.GetSection(nameof(WebhookOptions)));
+}
 ```
 
 ![Analytics](https://kentico-ga-beacon.azurewebsites.net/api/UA-69014260-4/Kentico/kontent-aspnetcore?pixel)
