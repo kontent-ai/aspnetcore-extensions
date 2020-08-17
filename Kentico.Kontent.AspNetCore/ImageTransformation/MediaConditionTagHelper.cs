@@ -31,10 +31,9 @@ namespace Kentico.Kontent.AspNetCore.ImageTransformation
         /// <inheritdoc/>
         public override Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
         {
-            if (context.Items.ContainsKey(AssetTagHelper.SIZES_COLLECTION))
+            if (context.Items.ContainsKey(AssetTagHelper.SizesCollection))
             {
-                var sizes = context.Items[AssetTagHelper.SIZES_COLLECTION] as List<string>;
-                if (sizes != null)
+                if (context.Items[AssetTagHelper.SizesCollection] is List<string> sizes)
                 {
                     var maxWidth = MaxWidth.HasValue ? $"(max-width: {MaxWidth.Value}px) and " : string.Empty;
                     sizes.Add($"{maxWidth}(min-width: {MinWidth}px) {ImageWidth}px");
@@ -43,12 +42,6 @@ namespace Kentico.Kontent.AspNetCore.ImageTransformation
             output.SuppressOutput();
 
             return Task.CompletedTask;
-        }
-
-        /// <inheritdoc/>
-        public override void Process(TagHelperContext context, TagHelperOutput output)
-        {
-            base.Process(context, output);
         }
     }
 }

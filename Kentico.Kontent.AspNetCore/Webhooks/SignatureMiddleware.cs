@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
 
-namespace Kentico.Kontent.AspNetCore.Middleware.Webhook
+namespace Kentico.Kontent.AspNetCore.Webhooks
 {
     /// <summary>
     /// Verifies signatures of Kentico Kontent webhooks.

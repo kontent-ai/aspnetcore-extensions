@@ -18,9 +18,9 @@ namespace Kentico.Kontent.AspNetCore.ImageTransformation
     [HtmlTargetElement("img-asset", Attributes = "asset")]
     public class AssetTagHelper : TagHelper
     {
-        internal const string SIZES_COLLECTION = "sizes";
+        internal const string SizesCollection = "sizes";
 
-        private int[] responsiveWidths;
+        private int[] _responsiveWidths;
 
         /// <summary>
         /// Application settings.
@@ -53,13 +53,13 @@ namespace Kentico.Kontent.AspNetCore.ImageTransformation
         {
             get
             {
-                if (responsiveWidths == null)
+                if (_responsiveWidths == null)
                 {
                     return ImageTransformationOptions.Value.ResponsiveWidths;
                 }
-                return responsiveWidths;
+                return _responsiveWidths;
             }
-            set => responsiveWidths = value;
+            set => _responsiveWidths = value;
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace Kentico.Kontent.AspNetCore.ImageTransformation
         {
             if (Asset == null)
             {
-                base.Process(context, output);
+                await base.ProcessAsync(context, output);
                 return;
             }
 
@@ -105,14 +105,11 @@ namespace Kentico.Kontent.AspNetCore.ImageTransformation
                 image.MergeAttribute("srcset", srcSet);
 
                 var sizes = new List<string>();
-                context.Items.Add(SIZES_COLLECTION, sizes);
+                context.Items.Add(SizesCollection, sizes);
                 await output.GetChildContentAsync();
 
-                if (sizes != null)
-                {
-                    var s = string.Join(", ", sizes.Concat(new[] { $"{DefaultWidth}px" }));
-                    image.MergeAttribute("sizes", s);
-                }
+                var s = string.Join(", ", sizes.Concat(new[] { $"{DefaultWidth}px" }));
+                image.MergeAttribute("sizes", s);
             }
 
             image.MergeAttribute("src", $"{imageUrlBuilder.Url}");

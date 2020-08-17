@@ -1,15 +1,15 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
-using System;
 
-namespace Kentico.Kontent.AspNetCore.Middleware.Webhook
+namespace Kentico.Kontent.AspNetCore.Webhooks
 {
     /// <summary>
     /// Provides webhook validation-related extension methods for the <see cref="IApplicationBuilder"/> interface.
     /// </summary>
-    public static class IApplicationBuilderExtensions
+    public static class ApplicationBuilderExtensions
     {
 
         /// <summary>
@@ -25,7 +25,7 @@ namespace Kentico.Kontent.AspNetCore.Middleware.Webhook
             {
                 if (options != null)
                 {
-                    appBuilder.UseMiddleware<SignatureMiddleware>((IOptions<WebhookOptions>)Options.Create(options));
+                    appBuilder.UseMiddleware<SignatureMiddleware>(Options.Create(options));
                 }
                 else
                 {
