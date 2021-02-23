@@ -70,4 +70,3 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 }
 ```
 
-![Analytics](https://kentico-ga-beacon.azurewebsites.net/api/UA-69014260-4/Kentico/kontent-aspnetcore?pixel)
