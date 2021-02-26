@@ -15,10 +15,11 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
-    - name: Extract version from tag and create a global version file
-    - id: get_version
+    - name: Extract version from tag
+      id: get_version
       uses: battila7/get-version-action@v2
-    - run: echo "<Project><PropertyGroup><Version>${{ steps.get_version.outputs.version }}</Version></PropertyGroup></Project>" > "Directory.build.props" 
+    - name: Create a global version file
+      run: echo "<Project><PropertyGroup><Version>${{ steps.get_version.outputs.version }}</Version></PropertyGroup></Project>" > "Directory.build.props" 
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
