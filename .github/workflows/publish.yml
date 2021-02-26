@@ -31,7 +31,7 @@ jobs:
     - name: Upload artifacts
       uses: actions/upload-artifact@v2
       with:
-        name: "Generator"
+        name: "NuGet packages"
         path: ./artifacts
     #- name: Publish artifacts to NuGet.org
     #  run: dotnet nuget push ./artifacts/*.nupkg -s https://api.nuget.org/v3/index.json -k ${NUGET_API_KEY} --skip-duplicate
