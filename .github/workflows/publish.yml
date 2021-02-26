@@ -19,17 +19,16 @@ jobs:
       id: get_version
       uses: battila7/get-version-action@v2
     - name: Create a global version file
-      uses: DamianReeves/write-file-action@v1.0
-      with:
-        path: ./Directory.Build.props
-        contents: "<Project><PropertyGroup><Version>${{ steps.get_version.outputs.version-without-v }}</Version></PropertyGroup></Project>"
-        write-mode: overwrite
+      #uses: DamianReeves/write-file-action@v1.0
+      #with:
+      #  path: ./Directory.Build.props
+      #  contents: "<Project><PropertyGroup><Version>${{ steps.get_version.outputs.version-without-v }}</Version></PropertyGroup></Project>"
+      #  write-mode: overwrite
       #uses: frdrwrt/write-to-file@v1.3
       #with: 
-      #  filepath: ./Directory.build.props
+      #  filepath: ./Directory.Build.props
       #  content: <Project><PropertyGroup><Version>${{ steps.get_version.outputs.version-without-v }}</Version></PropertyGroup></Project>
-    #- name: Create a global version file
-    #  run: echo "<Project><PropertyGroup><Version>${{ steps.get_version.outputs.version-without-v }}</Version></PropertyGroup></Project>" > "./Directory.build.props" 
+      run: echo "<Project><PropertyGroup><Version>${{ steps.get_version.outputs.version-without-v }}</Version></PropertyGroup></Project>" > Directory.Build.props
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
