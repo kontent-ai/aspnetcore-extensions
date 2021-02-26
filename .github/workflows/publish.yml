@@ -19,7 +19,7 @@ jobs:
       id: get_version
       uses: battila7/get-version-action@v2
     - name: Create a global version file
-      run: echo "<Project><PropertyGroup><Version>${{ steps.get_version.outputs.version }}</Version></PropertyGroup></Project>" > "Directory.build.props" 
+      run: echo "<Project><PropertyGroup><Version>${{ steps.get_version.outputs.version-without-v }}</Version></PropertyGroup></Project>" > "./Directory.build.props" 
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
