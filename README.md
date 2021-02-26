@@ -1,5 +1,5 @@
 [![NuGet](https://img.shields.io/nuget/v/Kentico.Kontent.AspNetCore.svg)](https://www.nuget.org/packages/Kentico.Kontent.AspNetCore/)
-[![AppVeyor](https://ci.appveyor.com/api/projects/status/5gm4u8267mabf8af/branch/master?svg=true)](https://ci.appveyor.com/project/kentico/kontent-aspnetcore)
+[![Build & Test](https://github.com/Kentico/kontent-aspnetcore/actions/workflows/test.yml/badge.svg)](https://github.com/Kentico/kontent-aspnetcore/actions/workflows/test.yml)
 [![Stack Overflow](https://img.shields.io/badge/Stack%20Overflow-ASK%20NOW-FE7A16.svg?logo=stackoverflow&logoColor=white)](https://stackoverflow.com/tags/kentico-kontent)
 
 # ASP.NET Core extensions for Kentico Kontent apps.
