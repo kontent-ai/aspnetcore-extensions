@@ -19,7 +19,7 @@ jobs:
       id: get_version
       uses: battila7/get-version-action@v2
     - name: Create a global version file
-      uses: DamianReeves/write-file-action
+      uses: DamianReeves/write-file-action@v1.0
       with:
         path: ./Directory.build.props
         contents: "<Project><PropertyGroup><Version>${{ steps.get_version.outputs.version-without-v }}</Version></PropertyGroup></Project>"
