@@ -37,7 +37,7 @@ namespace Kentico.Kontent.AspNetCore.Tests
             await middleware.InvokeAsync(ctx);
 
             // Assert
-            Assert.Equal(ctx.Response.StatusCode, (int)HttpStatusCode.NotFound);
+            Assert.Equal(ctx.Response.StatusCode, (int)HttpStatusCode.Unauthorized);
         }
     }
 }
