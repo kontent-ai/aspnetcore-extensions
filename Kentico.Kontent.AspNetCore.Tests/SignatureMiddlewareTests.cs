@@ -23,5 +23,21 @@ namespace Kentico.Kontent.AspNetCore.Tests
             // Assert
             Assert.Equal(ctx.Response.StatusCode, (int)HttpStatusCode.Unauthorized);
         }
+
+        [Fact]
+        public async Task RequestWithInvalidSignature_ReturnsUnauthorized()
+        {
+            // Arrange
+            var options = Options.Create(new WebhookOptions { });
+            var middleware = new SignatureMiddleware(null, options);
+            var ctx = new DefaultHttpContext();
+            ctx.Request.Headers.Add("X-KC-Signature", "ABC");
+
+            // Act
+            await middleware.InvokeAsync(ctx);
+
+            // Assert
+            Assert.Equal(ctx.Response.StatusCode, (int)HttpStatusCode.NotFound);
+        }
     }
 }
