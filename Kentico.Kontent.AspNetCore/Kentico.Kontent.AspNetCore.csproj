@@ -21,10 +21,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
     <PackageReference Include="Kentico.Kontent.Delivery.Abstractions" Version="14.2.1" />
     <PackageReference Include="Kentico.Kontent.ImageTransformation" Version="14.2.1" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
-    <PackageReference Include="Microsoft.Extensions.Options" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="5.0.0" />    
   </ItemGroup>
 
   <ItemGroup>
