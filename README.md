@@ -22,7 +22,7 @@ Useful for rendering responsive images. Supports Assets and Inline images in ric
 
 **_ViewImports.cshtml**
 ```razor
-@addTagHelper *, Kentico.Kontent.Boilerplate
+@addTagHelper *, Kentico.Kontent.AspNetCore
 ```
 
 **Startup.cs**
