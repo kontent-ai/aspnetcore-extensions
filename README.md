@@ -1,4 +1,4 @@
-[![NuGet](https://img.shields.io/nuget/v/Kentico.Kontent.AspNetCore.svg)](https://www.nuget.org/packages/Kentico.Kontent.AspNetCore/)
+[![NuGet](https://img.shields.io/nuget/vpre/Kentico.Kontent.AspNetCore.svg)](https://www.nuget.org/packages/Kentico.Kontent.AspNetCore/)
 [![Downloads](https://img.shields.io/nuget/dt/Kentico.Kontent.AspNetCore.svg)](https://www.nuget.org/packages/Kentico.Kontent.AspNetCore/)
 [![Build & Test](https://github.com/Kentico/kontent-aspnetcore/actions/workflows/integrate.yml/badge.svg)](https://github.com/Kentico/kontent-aspnetcore/actions/workflows/integrate.yml)
 [![codecov](https://codecov.io/gh/Kentico/kontent-aspnetcore/branch/master/graph/badge.svg?token=U4Y9PQDW6Q)](https://codecov.io/gh/Kentico/kontent-aspnetcore)
