@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Kentico.Kontent.Delivery.Abstractions;
-using Kentico.Kontent.ImageTransformation;
+using Kentico.Kontent.Delivery.Abstractions.ContentItems;
+using Kentico.Kontent.Delivery.Urls.ImageTransformation;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Microsoft.AspNetCore.Razor.TagHelpers;
