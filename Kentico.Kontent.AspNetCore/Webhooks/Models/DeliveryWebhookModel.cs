@@ -15,12 +15,12 @@ namespace Kentico.Kontent.AspNetCore.Webhooks.Models
         /// <summary>
         /// Data relevant to the operation that triggered the webhook.
         /// </summary>
-        [JsonPropertyName("data"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull), JsonPropertyOrder(1)]
+        [JsonPropertyName("data"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public DeliveryWebhookData Data { get; set; }
         /// <summary>
         /// The Message object contains information about the origin of the notification.
         /// </summary>
-        [JsonPropertyName("message"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull), JsonPropertyOrder(2)]
+        [JsonPropertyName("message"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public Message Message { get; set; }
     }
 
@@ -32,13 +32,13 @@ namespace Kentico.Kontent.AspNetCore.Webhooks.Models
         /// <summary>
         /// A collection of Item objects for each modified content item.
         /// </summary>
-        [JsonPropertyName("items"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull), JsonPropertyOrder(1)]
+        [JsonPropertyName("items"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public DeliveryWebhookItem[] Items { get; set; }
 
         /// <summary>
         /// A collection of  Taxonomy group objects.
         /// </summary>
-        [JsonPropertyName("taxonomies"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull), JsonPropertyOrder(2)]
+        [JsonPropertyName("taxonomies"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public Taxonomy[] Taxonomies { get; set; }
     }
 
@@ -50,31 +50,31 @@ namespace Kentico.Kontent.AspNetCore.Webhooks.Models
         /// <summary>
         /// The item's ID.
         /// </summary>
-        [JsonPropertyName("id"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull), JsonPropertyOrder(1)]
+        [JsonPropertyName("id"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public Guid? Id { get; set; }
 
         /// <summary>
         /// The item's codename.
         /// </summary>
-        [JsonPropertyName("codename"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull), JsonPropertyOrder(2)]
+        [JsonPropertyName("codename"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public string Codename { get; set; }
 
         /// <summary>
         /// Codename of the item's language.
         /// </summary>
-        [JsonPropertyName("language"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull), JsonPropertyOrder(3)]
+        [JsonPropertyName("language"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public string Language { get; set; }
 
         /// <summary>
         /// The item's type.
         /// </summary>
-        [JsonPropertyName("type"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull), JsonPropertyOrder(4)]
+        [JsonPropertyName("type"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public string Type { get; set; }
 
         /// <summary>
         /// Codename of the collection the item belongs to.
         /// </summary>
-        [JsonPropertyName("collection"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull), JsonPropertyOrder(5)]
+        [JsonPropertyName("collection"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public string Collection { get; set; }
 
     }

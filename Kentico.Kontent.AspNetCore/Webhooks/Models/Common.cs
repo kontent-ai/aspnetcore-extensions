@@ -15,43 +15,43 @@ namespace Kentico.Kontent.AspNetCore.Webhooks.Models
         /// <summary>
         /// Identifier of the webhook.
         /// </summary>
-        [JsonPropertyName("id"), JsonPropertyOrder(1)]
+        [JsonPropertyName("id")]
         public Guid Id { get; set; }
 
         /// <summary>
         /// Identifier of a Kentico Kontent project.
         /// </summary>
-        [JsonPropertyName("project_id"), JsonPropertyOrder(2)]
+        [JsonPropertyName("project_id")]
         public Guid? ProjectId { get; set; }
 
         /// <summary>
         /// Type of the object that triggered the webhook (content_item_variant, taxonomy, ...)
         /// </summary>
-        [JsonPropertyName("type"), JsonPropertyOrder(3)]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
         /// <summary>
         /// Codename of the operation that triggered the webhook.
         /// </summary>
-        [JsonPropertyName("operation"), JsonPropertyOrder(4)]
+        [JsonPropertyName("operation")]
         public string Operation { get; set; }
 
         /// <summary>
         /// Name of the API endpoint, e.g. content_management or delivery_production.
         /// </summary>
-        [JsonPropertyName("api_name"), JsonPropertyOrder(5)]
+        [JsonPropertyName("api_name")]
         public string ApiName { get; set; }
 
         /// <summary>
         /// Timestamp of the webhook.
         /// </summary>
-        [JsonPropertyName("created_timestamp"), JsonPropertyOrder(6)]
+        [JsonPropertyName("created_timestamp")]
         public DateTime CreatedTimestamp { get; set; }
 
         /// <summary>
         /// Publicly available URL address of your webhook endpoint.
         /// </summary>
-        [JsonPropertyName("webhook_url"), JsonPropertyOrder(7)]
+        [JsonPropertyName("webhook_url")]
         public string WebhookUrl { get; set; }
     }
 
@@ -63,13 +63,13 @@ namespace Kentico.Kontent.AspNetCore.Webhooks.Models
         /// <summary>
         /// The taxonomy group's internal ID.
         /// </summary>
-        [JsonPropertyName("id"), JsonPropertyOrder(1)]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
         /// <summary>
         /// The taxonomy group's codename.
         /// </summary>
-        [JsonPropertyName("codename"), JsonPropertyOrder(2)]
+        [JsonPropertyName("codename")]
         public string Codename { get; set; }
     }
 }
