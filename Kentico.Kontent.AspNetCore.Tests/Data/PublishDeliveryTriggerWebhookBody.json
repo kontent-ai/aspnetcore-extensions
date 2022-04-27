@@ -1,0 +1,23 @@
+{
+  "data": {
+    "items": [
+      {
+        "id": "ad7be0cd-ade8-4444-bb06-9dde23ad3fc8",
+        "codename": "post_150",
+        "language": "default",
+        "type": "post",
+        "collection": "default"
+      }
+    ],
+    "taxonomies": []
+  },
+  "message": {
+    "id": "3078e666-b725-44d3-b760-d81c23d56cd1",
+    "project_id": "74304de2-c3d4-01b7-aad3-487e219eca5b",
+    "type": "content_item_variant",
+    "operation": "publish",
+    "api_name": "delivery_production",
+    "created_timestamp": "2022-04-27T14:52:11.6851466Z",
+    "webhook_url": "https://webhook.site/df47e21c-14b8-4ff5-ac3a-fb7d8f3d11d4"
+  }
+}

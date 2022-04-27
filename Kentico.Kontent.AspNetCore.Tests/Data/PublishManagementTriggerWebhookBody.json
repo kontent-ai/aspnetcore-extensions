@@ -1,0 +1,29 @@
+{
+  "data": {
+    "items": [
+      {
+        "item": {
+          "id": "ad7be0cd-ade8-4444-bb06-9dde23ad3fc8"
+        },
+        "language": {
+          "id": "00000000-0000-0000-0000-000000000000"
+        },
+        "transition_from": {
+          "id": "eee6db3b-545a-4785-8e86-e3772c8756f9"
+        },
+        "transition_to": {
+          "id": "c199950d-99f0-4983-b711-6c4c91624b22"
+        }
+      }
+    ]
+  },
+  "message": {
+    "id": "352c48a1-cb76-4d1e-84a3-2f7056573be8",
+    "project_id": "74304de2-c3d4-01b7-aad3-487e219eca5b",
+    "type": "content_item_variant",
+    "operation": "change_workflow_step",
+    "api_name": "content_management",
+    "created_timestamp": "2022-04-27T15:52:02.4223349Z",
+    "webhook_url": "https://webhook.site/df47e21c-14b8-4ff5-ac3a-fb7d8f3d11d4"
+  }
+}

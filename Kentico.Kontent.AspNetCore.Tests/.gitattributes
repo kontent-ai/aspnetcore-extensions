@@ -1,0 +1,2 @@
+# For webhook body mock files
+*.json text eol=crlf
