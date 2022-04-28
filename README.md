@@ -4,7 +4,7 @@
 [![codecov](https://codecov.io/gh/Kentico/kontent-aspnetcore/branch/master/graph/badge.svg?token=U4Y9PQDW6Q)](https://codecov.io/gh/Kentico/kontent-aspnetcore)
 [![Stack Overflow](https://img.shields.io/badge/Stack%20Overflow-ASK%20NOW-FE7A16.svg?logo=stackoverflow&logoColor=white)](https://stackoverflow.com/tags/kentico-kontent)
 
-# ASP.NET Core extensions for Kentico Kontent apps.
+# ASP.NET Core extensions for Kontent apps.
 
 ## Tag Helpers
 ### `img-asset` tag helper
@@ -32,7 +32,7 @@ public void ConfigureServices(IServiceCollection services)
     // Adds services required for using options.
     services.AddOptions();
 
-    // Register the ImageTransformationOptions required by Kentico Kontent tag helpers
+    // Register the ImageTransformationOptions required by Kontent tag helpers
     services.Configure<ImageTransformationOptions>(Configuration.GetSection(nameof(ImageTransformationOptions)));
 }
 ```
