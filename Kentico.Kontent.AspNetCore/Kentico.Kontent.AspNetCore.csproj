@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFrameworks>net5.0;net6.0</TargetFrameworks>
     <LangVersion>latest</LangVersion>
     <Authors>Kentico Software</Authors>
     <Product>Kentico Kontent</Product>
@@ -22,9 +22,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
-    <PackageReference Include="Kentico.Kontent.Delivery.Abstractions" Version="14.2.1" />
-    <PackageReference Include="Kentico.Kontent.ImageTransformation" Version="14.2.1" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+	<PackageReference Include="Kentico.Kontent.Urls" Version="16.0.0" />
+    <PackageReference Include="Kentico.Kontent.Delivery.Abstractions" Version="16.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Options" Version="5.0.0" />    
   </ItemGroup>
