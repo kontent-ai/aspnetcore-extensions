@@ -51,6 +51,7 @@ public void ConfigureServices(IServiceCollection services)
 ```
 ## Webhooks
 Package provides models for webhook deserialization: `DeliveryWebhookModel` and `ManagementWebhookModel`, to be used with (preview) delivery API and management API triggers respectively. See [Webhooks reference](https://kontent.ai/learn/reference/webhooks-reference/) in Kontent documentation.
+
 ## Middlewares
 ### Webhook signature verification middleware
 This middleware verifies the `X-KC-Signature` header. Returns 401 response if the signature is invalid.
