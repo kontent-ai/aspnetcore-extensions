@@ -19,7 +19,7 @@ namespace Kentico.Kontent.AspNetCore.Webhooks.Models
         public Guid Id { get; set; }
 
         /// <summary>
-        /// Identifier of a Kentico Kontent project.
+        /// Identifier of a Kontent project.
         /// </summary>
         [JsonPropertyName("project_id")]
         public Guid? ProjectId { get; set; }
