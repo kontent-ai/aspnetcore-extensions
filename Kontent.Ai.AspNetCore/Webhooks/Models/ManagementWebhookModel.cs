@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace Kontent.Ai.AspNetCore.Webhooks.Models
 {
     /// <summary>
-    /// Root object of a Kontent management API triggered webhook.
+    /// Root object of a Kontent.ai management API triggered webhook.
     /// See <see href="https://kontent.ai/learn/reference/webhooks-reference/">webhooks reference documentation</see> for details.
     /// </summary>
     public class ManagementWebhookModel

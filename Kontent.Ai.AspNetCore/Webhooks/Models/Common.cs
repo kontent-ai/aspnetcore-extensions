@@ -19,7 +19,7 @@ namespace Kontent.Ai.AspNetCore.Webhooks.Models
         public Guid Id { get; set; }
 
         /// <summary>
-        /// Identifier of a Kontent project.
+        /// Identifier of a Kontent.ai project.
         /// </summary>
         [JsonPropertyName("project_id")]
         public Guid? ProjectId { get; set; }

@@ -17,7 +17,7 @@ namespace Kontent.Ai.AspNetCore.Webhooks
         /// </summary>
         /// <param name="app">The <see cref="IApplicationBuilder">application</see> to configure.</param>
         /// <param name="predicate">Invoked with the request environment to determine if the branch should be taken</param>
-        /// <param name="options">A configuration object that allows to adjust the Kentico Kontent webhook behavior.</param>
+        /// <param name="options">A configuration object that allows to adjust the Kontent.ai webhook behavior.</param>
         /// <returns>The original <see cref="IApplicationBuilder"/>.</returns>
         public static IApplicationBuilder UseWebhookSignatureValidator(this IApplicationBuilder app, Func<HttpContext, bool> predicate, WebhookOptions options = null)
         {

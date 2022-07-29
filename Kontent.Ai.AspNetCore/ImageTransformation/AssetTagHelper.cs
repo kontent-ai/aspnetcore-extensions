@@ -12,7 +12,7 @@ using Microsoft.Extensions.Options;
 namespace Kontent.Ai.AspNetCore.ImageTransformation
 {
     /// <summary>
-    /// A tag helper that generates img elements based on assets stored in Kentico Kontent.
+    /// A tag helper that generates img elements based on assets stored in Kontent.ai.
     /// </summary>
     [RestrictChildren("media-condition")]
     [HtmlTargetElement("img-asset", Attributes = "asset")]
@@ -28,7 +28,7 @@ namespace Kontent.Ai.AspNetCore.ImageTransformation
         public IOptions<ImageTransformationOptions> ImageTransformationOptions { get; set; }
 
         /// <summary>
-        /// Represents an asset object stored in Kentico Kontent. This property is mandatory in order to properly generate an img tag.
+        /// Represents an asset object stored in Kontent.ai. This property is mandatory in order to properly generate an img tag.
         /// </summary>
         [HtmlAttributeName("asset")]
         public IImage Asset { get; set; }
