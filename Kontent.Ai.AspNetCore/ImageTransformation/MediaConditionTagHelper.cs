@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Kentico.Kontent.AspNetCore.ImageTransformation
+namespace Kontent.Ai.AspNetCore.ImageTransformation
 {
     /// <summary>
     /// Represents one media condition from image sizes attribute.

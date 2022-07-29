@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 
-namespace Kentico.Kontent.AspNetCore.Webhooks
+namespace Kontent.Ai.AspNetCore.Webhooks
 {
     /// <summary>
     /// Provides webhook validation-related extension methods for the <see cref="IApplicationBuilder"/> interface.

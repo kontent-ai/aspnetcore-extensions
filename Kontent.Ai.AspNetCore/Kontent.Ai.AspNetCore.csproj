@@ -23,8 +23,8 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
-	<PackageReference Include="Kentico.Kontent.Urls" Version="16.0.0" />
-    <PackageReference Include="Kentico.Kontent.Delivery.Abstractions" Version="16.0.0" />
+	<PackageReference Include="Kontent.Ai.Urls" Version="16.0.0" />
+    <PackageReference Include="Kontent.Ai.Delivery.Abstractions" Version="16.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Options" Version="5.0.0" />    
   </ItemGroup>

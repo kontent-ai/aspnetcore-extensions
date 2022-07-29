@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Kentico.Kontent.Delivery.Abstractions;
-using Kentico.Kontent.Urls.ImageTransformation;
+using Kontent.Ai.Delivery.Abstractions;
+using Kontent.Ai.Urls.ImageTransformation;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.Extensions.Options;
 
-namespace Kentico.Kontent.AspNetCore.ImageTransformation
+namespace Kontent.Ai.AspNetCore.ImageTransformation
 {
     /// <summary>
     /// A tag helper that generates img elements based on assets stored in Kentico Kontent.

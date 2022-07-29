@@ -1,4 +1,4 @@
-﻿namespace Kentico.Kontent.AspNetCore.ImageTransformation
+﻿namespace Kontent.Ai.AspNetCore.ImageTransformation
 {
     /// <summary>
     /// A configuration object allowing to adjust the image transformation behavior.
