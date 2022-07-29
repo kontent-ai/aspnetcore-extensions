@@ -3,10 +3,12 @@
   <PropertyGroup>
     <TargetFrameworks>net5.0;net6.0</TargetFrameworks>
     <LangVersion>latest</LangVersion>
-    <Authors>Kentico Software</Authors>
-    <Product>Kentico Kontent</Product>
-    <Copyright>© 2020 Kentico Software. All rights reserved.</Copyright>
-    <Description>Kentico Kontent ASP.NET Core SDK</Description>
+    <Authors>Kontent s.r.o.</Authors>
+    <Product>Kontent.ai</Product>
+    <Copyright>© 2022 Kontent s.r.o. All rights reserved.</Copyright>
+    <Description>Kontent.ai ASP.NET Core SDK</Description>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>kai-logo-symbol-color-rgb.png</PackageIcon>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/Kentico/kontent-aspnetcore</PackageProjectUrl>
     <PackageIconUrl>https://github.com/Kentico/Home/blob/master/images/kk-logo-nuget.png?raw=true</PackageIconUrl>
