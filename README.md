@@ -1,10 +1,10 @@
 [![NuGet](https://img.shields.io/nuget/vpre/Kontent.Ai.AspNetCore.svg)](https://www.nuget.org/packages/Kontent.Ai.AspNetCore/)
 [![Downloads](https://img.shields.io/nuget/dt/Kontent.Ai.AspNetCore.svg)](https://www.nuget.org/packages/Kontent.Ai.AspNetCore/)
-[![Build & Test](https://github.com/Kentico/kontent-aspnetcore/actions/workflows/integrate.yml/badge.svg)](https://github.com/Kentico/kontent-aspnetcore/actions/workflows/integrate.yml)
-[![codecov](https://codecov.io/gh/Kentico/kontent-aspnetcore/branch/master/graph/badge.svg?token=U4Y9PQDW6Q)](https://codecov.io/gh/Kentico/kontent-aspnetcore)
-[![Stack Overflow](https://img.shields.io/badge/Stack%20Overflow-ASK%20NOW-FE7A16.svg?logo=stackoverflow&logoColor=white)](https://stackoverflow.com/tags/kentico-kontent)
+[![Build & Test](https://github.com/kontent-ai/aspnetcore/actions/workflows/integrate.yml/badge.svg)](https://github.com/aspnetcore/actions/workflows/integrate.yml)
+[![codecov](https://codecov.io/gh/kontent-ai/aspnetcore/branch/master/graph/badge.svg?token=U4Y9PQDW6Q)](https://codecov.io/gh/kontent-ai/aspnetcore)
+[![Stack Overflow](https://img.shields.io/badge/Stack%20Overflow-ASK%20NOW-FE7A16.svg?logo=stackoverflow&logoColor=white)](https://stackoverflow.com/tags/kontent-ai)
 
-# ASP.NET Core extensions for Kontent apps.
+# ASP.NET Core extensions for Kontent.ai apps.
 
 ## Tag Helpers
 ### `img-asset` tag helper
@@ -32,7 +32,7 @@ public void ConfigureServices(IServiceCollection services)
     // Adds services required for using options.
     services.AddOptions();
 
-    // Register the ImageTransformationOptions required by Kontent tag helpers
+    // Register the ImageTransformationOptions required by Kontent.ai tag helpers
     services.Configure<ImageTransformationOptions>(Configuration.GetSection(nameof(ImageTransformationOptions)));
 }
 ```
@@ -50,7 +50,7 @@ public void ConfigureServices(IServiceCollection services)
 <img class="img-responsive" alt="Coffee Brewing Techniques" sizes="(min-width: 769px) 300px, (max-width: 768px) and (min-width: 330px) 689px, 300px" src="https://assets-us-01.kc-usercontent.com/975bf280-fd91-488c-994c-2f04416e5ee3/fcbb12e6-66a3-4672-85d9-d502d16b8d9c/which-brewing-fits-you-1080px.jpg?w=2000" srcset="https://assets-us-01.kc-usercontent.com/975bf280-fd91-488c-994c-2f04416e5ee3/fcbb12e6-66a3-4672-85d9-d502d16b8d9c/which-brewing-fits-you-1080px.jpg?w=200 200w,https://assets-us-01.kc-usercontent.com/975bf280-fd91-488c-994c-2f04416e5ee3/fcbb12e6-66a3-4672-85d9-d502d16b8d9c/which-brewing-fits-you-1080px.jpg?w=300 300w,https://assets-us-01.kc-usercontent.com/975bf280-fd91-488c-994c-2f04416e5ee3/fcbb12e6-66a3-4672-85d9-d502d16b8d9c/which-brewing-fits-you-1080px.jpg?w=400 400w,https://assets-us-01.kc-usercontent.com/975bf280-fd91-488c-994c-2f04416e5ee3/fcbb12e6-66a3-4672-85d9-d502d16b8d9c/which-brewing-fits-you-1080px.jpg?w=600 600w,https://assets-us-01.kc-usercontent.com/975bf280-fd91-488c-994c-2f04416e5ee3/fcbb12e6-66a3-4672-85d9-d502d16b8d9c/which-brewing-fits-you-1080px.jpg?w=800 800w,https://assets-us-01.kc-usercontent.com/975bf280-fd91-488c-994c-2f04416e5ee3/fcbb12e6-66a3-4672-85d9-d502d16b8d9c/which-brewing-fits-you-1080px.jpg?w=1000 1000w,https://assets-us-01.kc-usercontent.com/975bf280-fd91-488c-994c-2f04416e5ee3/fcbb12e6-66a3-4672-85d9-d502d16b8d9c/which-brewing-fits-you-1080px.jpg?w=1200 1200w,https://assets-us-01.kc-usercontent.com/975bf280-fd91-488c-994c-2f04416e5ee3/fcbb12e6-66a3-4672-85d9-d502d16b8d9c/which-brewing-fits-you-1080px.jpg?w=1400 1400w,https://assets-us-01.kc-usercontent.com/975bf280-fd91-488c-994c-2f04416e5ee3/fcbb12e6-66a3-4672-85d9-d502d16b8d9c/which-brewing-fits-you-1080px.jpg?w=1600 1600w,https://assets-us-01.kc-usercontent.com/975bf280-fd91-488c-994c-2f04416e5ee3/fcbb12e6-66a3-4672-85d9-d502d16b8d9c/which-brewing-fits-you-1080px.jpg?w=2000 2000w" title="Coffee Brewing Techniques" />
 ```
 ## Webhooks
-Package provides models for webhook deserialization: `DeliveryWebhookModel` and `ManagementWebhookModel`, to be used with (preview) delivery API and management API triggers respectively. See [Webhooks reference](https://kontent.ai/learn/reference/webhooks-reference/) in Kontent documentation.
+Package provides models for webhook deserialization: `DeliveryWebhookModel` and `ManagementWebhookModel`, to be used with (preview) delivery API and management API triggers respectively. See [Webhooks reference](https://kontent.ai/learn/reference/webhooks-reference/) in Kontent.ai documentation.
 
 ## Middlewares
 ### Webhook signature verification middleware
