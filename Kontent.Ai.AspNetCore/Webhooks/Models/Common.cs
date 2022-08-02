@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace Kentico.Kontent.AspNetCore.Webhooks.Models
+namespace Kontent.Ai.AspNetCore.Webhooks.Models
 {
     /// <summary>
     /// The Message object contains information about the origin of the notification.
@@ -19,7 +19,7 @@ namespace Kentico.Kontent.AspNetCore.Webhooks.Models
         public Guid Id { get; set; }
 
         /// <summary>
-        /// Identifier of a Kontent project.
+        /// Identifier of a Kontent.ai project.
         /// </summary>
         [JsonPropertyName("project_id")]
         public Guid? ProjectId { get; set; }

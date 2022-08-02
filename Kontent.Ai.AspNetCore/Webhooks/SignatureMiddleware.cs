@@ -8,17 +8,17 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
 
-namespace Kentico.Kontent.AspNetCore.Webhooks
+namespace Kontent.Ai.AspNetCore.Webhooks
 {
     /// <summary>
-    /// Verifies signatures of Kentico Kontent webhooks.
+    /// Verifies signatures of Kontent.ai webhooks.
     /// </summary>
     public class SignatureMiddleware
     {
         private readonly RequestDelegate _next;
 
         /// <summary>
-        /// A configuration object that allows to adjust the Kentico Kontent webhook behavior.
+        /// A configuration object that allows to adjust the Kontent.ai webhook behavior.
         /// It contains a webhook secret used for signature validation.
         /// </summary>
         public IOptions<WebhookOptions> WebhookOptions { get; }
@@ -27,7 +27,7 @@ namespace Kentico.Kontent.AspNetCore.Webhooks
         /// Creates an instance of the <see cref="SignatureMiddleware"/>.
         /// </summary>
         /// <param name="next">The next middleware in the pipeline.</param>
-        /// <param name="webhookOptions">A configuration object that allows to adjust the Kentico Kontent webhook behavior.</param>
+        /// <param name="webhookOptions">A configuration object that allows to adjust the Kontent.ai webhook behavior.</param>
         public SignatureMiddleware(RequestDelegate next, IOptions<WebhookOptions> webhookOptions)
         {
             _next = next;

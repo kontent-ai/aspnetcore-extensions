@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net6.0</TargetFrameworks>
+    <LangVersion>latest</LangVersion>
+    <Authors>Kontent s.r.o.</Authors>
+    <Product>Kontent.ai</Product>
+    <Copyright>© 2022 Kontent s.r.o. All rights reserved.</Copyright>
+    <Description>Kontent.ai ASP.NET Core SDK</Description>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>kai-logo-symbol-color-rgb.png</PackageIcon>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/kontent-ai/aspnetcore</PackageProjectUrl>
+    <PackageIconUrl>https://github.com/kontent-ai/.github/blob/main/logos/kai-logo-symbol-color-rgb.png?raw=true</PackageIconUrl>
+    <RepositoryUrl>https://github.com/kontent-ai/aspnetcore.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>kontent-ai;mvc;aspnet;aspnetmvc</PackageTags>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Kontent.Ai.Delivery.Abstractions" Version="17.0.0-beta.2" />
+    <PackageReference Include="Kontent.Ai.Urls" Version="17.0.0-beta.2" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="6.0.0" />    
+  </ItemGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ImageTransformation\" />
+  </ItemGroup>
+
+</Project>

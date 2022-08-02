@@ -1,7 +1,7 @@
-﻿namespace Kentico.Kontent.AspNetCore.Webhooks
+﻿namespace Kontent.Ai.AspNetCore.Webhooks
 {
     /// <summary>
-    /// A configuration object that allows to adjust the Kentico Kontent webhook behavior.
+    /// A configuration object that allows to adjust the Kontent.ai webhook behavior.
     /// </summary>
     public class WebhookOptions
     {

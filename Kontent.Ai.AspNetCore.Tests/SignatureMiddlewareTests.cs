@@ -1,4 +1,4 @@
-using Kentico.Kontent.AspNetCore.Webhooks;
+using Kontent.Ai.AspNetCore.Webhooks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.TestHost;
@@ -11,7 +11,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Kentico.Kontent.AspNetCore.Tests
+namespace Kontent.Ai.AspNetCore.Tests
 {
     public class SignatureMiddlewareTests
     {
