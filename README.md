@@ -5,6 +5,7 @@
 [![Build & Test](https://github.com/kontent-ai/aspnetcore/actions/workflows/integrate.yml/badge.svg)](https://github.com/aspnetcore/actions/workflows/integrate.yml)
 [![codecov](https://codecov.io/gh/kontent-ai/aspnetcore/branch/master/graph/badge.svg?token=U4Y9PQDW6Q)](https://codecov.io/gh/kontent-ai/aspnetcore)
 [![Stack Overflow](https://img.shields.io/badge/Stack%20Overflow-ASK%20NOW-FE7A16.svg?logo=stackoverflow&logoColor=white)](https://stackoverflow.com/tags/kontent-ai)
+[![Discord](https://img.shields.io/discord/821885171984891914?color=%237289DA&label=Kontent.ai%20Discord&logo=discord)](https://discord.gg/SKCxwPtevJ)
 
 ## Tag Helpers
 
