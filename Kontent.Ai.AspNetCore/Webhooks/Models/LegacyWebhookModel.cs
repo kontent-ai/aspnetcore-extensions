@@ -1,20 +1,19 @@
-﻿using System;
+using System;
 using System.Text.Json.Serialization;
 
 namespace Kontent.Ai.AspNetCore.Webhooks.Models
 {
     /// <summary>
-    /// Root object of a Kontent.ai management API triggered webhook.
-    /// See <see href="https://kontent.ai/learn/reference/webhooks-reference/">webhooks reference documentation</see> for details.
+    /// Root object of a Kontent.ai delivery or preview-delivery API triggered legacy webhook.
+    /// See <see href="https://kontent.ai/learn/reference/webhooks-reference/">legacy webhooks reference documentation</see> for details.
     /// </summary>
-    public class ManagementWebhookModel
+    public class LegacyWebhookModel
     {
         /// <summary>
         /// Data relevant to the operation that triggered the webhook.
         /// </summary>
         [JsonPropertyName("data"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        public ManagementWebhookData Data { get; set; }
-
+        public LegacyWebhookData Data { get; set; }
         /// <summary>
         /// The Message object contains information about the origin of the notification.
         /// </summary>
@@ -25,16 +24,16 @@ namespace Kontent.Ai.AspNetCore.Webhooks.Models
     /// <summary>
     /// Data relevant to the operation that triggered the webhook.
     /// </summary>
-    public class ManagementWebhookData
+    public class LegacyWebhookData
     {
         /// <summary>
         /// A collection of Item objects for each modified content item.
         /// </summary>
         [JsonPropertyName("items"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        public ManagementWebhookItem[] Items { get; set; }
+        public LegacyWebhookItem[] Items { get; set; }
 
         /// <summary>
-        /// A collection of Taxonomy group objects.
+        /// A collection of  Taxonomy group objects.
         /// </summary>
         [JsonPropertyName("taxonomies"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public Taxonomy[] Taxonomies { get; set; }
@@ -43,30 +42,36 @@ namespace Kontent.Ai.AspNetCore.Webhooks.Models
     /// <summary>
     /// A Content item object.
     /// </summary>
-    public class ManagementWebhookItem
+    public class LegacyWebhookItem : IWebhookItem
     {
         /// <summary>
-        /// Reference to an item.
+        /// The item's ID.
         /// </summary>
-        [JsonPropertyName("item"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        public Reference Item { get; set; }
+        [JsonPropertyName("id"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public Guid? Id { get; set; }
 
         /// <summary>
-        /// Reference to a language.
+        /// The item's codename.
+        /// </summary>
+        [JsonPropertyName("codename"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public string Codename { get; set; }
+
+        /// <summary>
+        /// Codename of the item's language.
         /// </summary>
         [JsonPropertyName("language"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        public Reference Language { get; set; }
+        public string Language { get; set; }
 
         /// <summary>
-        /// Reference to the workflow step being transitioned from.
+        /// The item's type.
         /// </summary>
-        [JsonPropertyName("transition_from"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        public Reference TransitionFrom { get; set; }
+        [JsonPropertyName("type"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public string Type { get; set; }
 
         /// <summary>
-        /// Reference to the workflow step being transitioned to.
+        /// Codename of the collection the item belongs to.
         /// </summary>
-        [JsonPropertyName("transition_to"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        public Reference TransitionTo { get; set; }
+        [JsonPropertyName("collection"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public string Collection { get; set; }
     }
 }
