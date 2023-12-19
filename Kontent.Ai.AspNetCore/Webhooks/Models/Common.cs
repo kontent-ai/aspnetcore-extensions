@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace Kontent.Ai.AspNetCore.Webhooks.Models
 {
     /// <summary>
-    /// The Message object contains information about the origin of the notification.
+    /// The Legacy Message object contains information about the origin of the notification.
     /// </summary>
-    public class Message
+    public class LegacyMessage
     {
         /// <summary>
         /// Identifier of the webhook.
@@ -71,5 +67,66 @@ namespace Kontent.Ai.AspNetCore.Webhooks.Models
         /// </summary>
         [JsonPropertyName("codename")]
         public string Codename { get; set; }
+    }
+
+    /// <summary>
+    /// The Message object contains information about the origin of the notification.
+    /// </summary>
+    public class Message
+    {
+        /// <summary>
+        /// Identifier of the webhook.
+        /// </summary>
+        [JsonPropertyName("environment_id")]
+        public Guid EnvironmentId { get; set; }
+
+        /// <summary>
+        /// Type of the object that triggered the webhook (content_item_variant, taxonomy, ...)
+        /// </summary>
+        [JsonPropertyName("object_type")]
+        public string ObjectType { get; set; }
+
+        /// <summary>
+        /// Codename of the action that triggered the webhook (published, unpublished, created, deleted, ...).
+        /// </summary>
+        [JsonPropertyName("action")]
+        public string Action { get; set; }
+
+        /// <summary>
+        /// Codename of the delivery slot where the webhook was triggered (preview, published).
+        /// </summary>
+        [JsonPropertyName("delivery_slot")]
+        public string DeliverySlot { get; set; }
+    }
+
+    /// <summary>
+    /// Interface used as base for webhook item.
+    /// </summary>
+    public interface IWebhookItem
+    {
+         /// <summary>
+        /// The item's ID.
+        /// </summary>
+        public Guid? Id { get; set; }
+
+        /// <summary>
+        /// The item's codename.
+        /// </summary>
+        public string Codename { get; set; }
+
+        /// <summary>
+        /// The item's collection.
+        /// </summary>
+        public string Collection { get; set; }
+
+        /// <summary>
+        /// Codename of the item's language.
+        /// </summary>
+        public string Language { get; set; }
+
+        /// <summary>
+        /// The item's type.
+        /// </summary>
+        public string Type { get; set; }
     }
 }
