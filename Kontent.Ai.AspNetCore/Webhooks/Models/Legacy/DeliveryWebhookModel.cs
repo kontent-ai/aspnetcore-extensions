@@ -1,36 +1,36 @@
 using System;
 using System.Text.Json.Serialization;
 
-namespace Kontent.Ai.AspNetCore.Webhooks.Models
+namespace Kontent.Ai.AspNetCore.Webhooks.Models.Legacy
 {
     /// <summary>
     /// Root object of a Kontent.ai delivery or preview-delivery API triggered legacy webhook.
     /// See <see href="https://kontent.ai/learn/reference/webhooks-reference/">legacy webhooks reference documentation</see> for details.
     /// </summary>
-    public class LegacyWebhookModel
+    public class DeliveryWebhookModel
     {
         /// <summary>
         /// Data relevant to the operation that triggered the webhook.
         /// </summary>
         [JsonPropertyName("data"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        public LegacyWebhookData Data { get; set; }
+        public DeliveryWebhookData Data { get; set; }
         /// <summary>
         /// The Message object contains information about the origin of the notification.
         /// </summary>
         [JsonPropertyName("message"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        public LegacyMessage Message { get; set; }
+        public Message Message { get; set; }
     }
 
     /// <summary>
     /// Data relevant to the operation that triggered the webhook.
     /// </summary>
-    public class LegacyWebhookData
+    public class DeliveryWebhookData
     {
         /// <summary>
         /// A collection of Item objects for each modified content item.
         /// </summary>
         [JsonPropertyName("items"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        public LegacyWebhookItem[] Items { get; set; }
+        public WebhookItem[] Items { get; set; }
 
         /// <summary>
         /// A collection of  Taxonomy group objects.
@@ -42,7 +42,7 @@ namespace Kontent.Ai.AspNetCore.Webhooks.Models
     /// <summary>
     /// A Content item object.
     /// </summary>
-    public class LegacyWebhookItem : IWebhookItem
+    public class WebhookItem : IWebhookItem
     {
         /// <summary>
         /// The item's ID.
