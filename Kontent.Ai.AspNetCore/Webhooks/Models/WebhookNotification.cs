@@ -79,7 +79,7 @@ namespace Kontent.Ai.AspNetCore.Webhooks.Models
     /// <summary>
     /// Represents metadata of the modified object.
     /// </summary>
-    public class WebhookItem : IWebhookItem
+    public class WebhookItem
     {
         /// <summary>
         /// The object's ID.

@@ -42,7 +42,7 @@ namespace Kontent.Ai.AspNetCore.Webhooks.Models.Legacy
     /// <summary>
     /// A Content item object.
     /// </summary>
-    public class WebhookItem : IWebhookItem
+    public class WebhookItem
     {
         /// <summary>
         /// The item's ID.
