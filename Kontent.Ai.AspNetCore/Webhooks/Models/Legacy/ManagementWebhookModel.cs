@@ -1,7 +1,6 @@
-﻿using System;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
-namespace Kontent.Ai.AspNetCore.Webhooks.Models
+namespace Kontent.Ai.AspNetCore.Webhooks.Models.Legacy
 {
     /// <summary>
     /// Root object of a Kontent.ai management API triggered webhook.
@@ -19,7 +18,7 @@ namespace Kontent.Ai.AspNetCore.Webhooks.Models
         /// The Message object contains information about the origin of the notification.
         /// </summary>
         [JsonPropertyName("message"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        public LegacyMessage Message { get; set; }
+        public Message Message { get; set; }
     }
 
     /// <summary>
