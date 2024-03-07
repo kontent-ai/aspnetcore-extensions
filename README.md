@@ -77,7 +77,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## Webhooks
 
-Package provides models for webhook deserialization: `DeliveryWebhookModel` and `ManagementWebhookModel`, to be used with (preview) delivery API and management API triggers respectively. See [Webhooks reference](https://kontent.ai/learn/reference/webhooks-reference/) in Kontent.ai documentation.
+Package provides a model for webhook deserialization: `WebhookNotification`. Legacy webhooks are supported via classes `DeliveryWebhookModel` and `ManagementWebhookModel`, to be used with legacy (preview) delivery API and management API triggers respectively. See [Webhooks reference](https://kontent.ai/learn/reference/webhooks-reference/) in Kontent.ai documentation.
 
 ## Middlewares
 
