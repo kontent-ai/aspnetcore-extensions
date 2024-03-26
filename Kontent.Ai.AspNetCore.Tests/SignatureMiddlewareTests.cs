@@ -72,7 +72,7 @@ namespace Kontent.Ai.AspNetCore.Tests
                 })
                 .StartAsync();
 
-            var responsePath = Path.Combine(Environment.CurrentDirectory, "Data", bodyFilename);
+            var responsePath = Path.Combine(Environment.CurrentDirectory, "Data", "Legacy", bodyFilename);
             var server = host.GetTestServer();
             var context = await server.SendAsync(c =>
             {

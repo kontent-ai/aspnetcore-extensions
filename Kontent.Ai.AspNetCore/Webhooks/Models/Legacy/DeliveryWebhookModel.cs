@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
-namespace Kontent.Ai.AspNetCore.Webhooks.Models
+namespace Kontent.Ai.AspNetCore.Webhooks.Models.Legacy
 {
     /// <summary>
-    /// Root object of a Kontent.ai delivery or preview-delivery API triggered webhook.
-    /// See <see href="https://kontent.ai/learn/reference/webhooks-reference/">webhooks reference documentation</see>  for details.
+    /// Root object of a Kontent.ai delivery or preview-delivery API triggered legacy webhook.
+    /// See <see href="https://kontent.ai/learn/reference/webhooks-reference/">legacy webhooks reference documentation</see> for details.
     /// </summary>
     public class DeliveryWebhookModel
     {
@@ -34,7 +30,7 @@ namespace Kontent.Ai.AspNetCore.Webhooks.Models
         /// A collection of Item objects for each modified content item.
         /// </summary>
         [JsonPropertyName("items"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        public DeliveryWebhookItem[] Items { get; set; }
+        public WebhookItem[] Items { get; set; }
 
         /// <summary>
         /// A collection of  Taxonomy group objects.
@@ -46,7 +42,7 @@ namespace Kontent.Ai.AspNetCore.Webhooks.Models
     /// <summary>
     /// A Content item object.
     /// </summary>
-    public class DeliveryWebhookItem
+    public class WebhookItem
     {
         /// <summary>
         /// The item's ID.
@@ -77,6 +73,5 @@ namespace Kontent.Ai.AspNetCore.Webhooks.Models
         /// </summary>
         [JsonPropertyName("collection"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public string Collection { get; set; }
-
     }
 }

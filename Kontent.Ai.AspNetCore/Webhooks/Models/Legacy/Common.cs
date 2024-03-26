@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
-namespace Kontent.Ai.AspNetCore.Webhooks.Models
+namespace Kontent.Ai.AspNetCore.Webhooks.Models.Legacy 
 {
     /// <summary>
-    /// The Message object contains information about the origin of the notification.
+    /// The Legacy Message object contains information about the origin of the notification.
     /// </summary>
     public class Message
     {

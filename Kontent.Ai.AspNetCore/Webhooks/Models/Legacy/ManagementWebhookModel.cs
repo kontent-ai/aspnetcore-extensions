@@ -1,7 +1,6 @@
-﻿using System;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
-namespace Kontent.Ai.AspNetCore.Webhooks.Models
+namespace Kontent.Ai.AspNetCore.Webhooks.Models.Legacy
 {
     /// <summary>
     /// Root object of a Kontent.ai management API triggered webhook.
