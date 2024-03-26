@@ -1,0 +1,25 @@
+{
+    "notifications": [
+        {
+            "data": {
+                "system": {
+                    "id": "123e4567-e89b-12d3-a456-426614174000",
+                    "name": "Test Item",
+                    "codename": "test_item",
+                    "collection": "default",
+                    "workflow": "default_workflow",
+                    "workflow_step": "step_1",
+                    "language": "en-US",
+                    "type": "article",
+                    "last_modified": "2022-01-01T12:00:00Z"
+                }
+            },
+            "message": {
+                "environment_id": "123e4567-e89b-12d3-a456-426614174000",
+                "object_type": "content_item_variant",
+                "action": "published",
+                "delivery_slot": "published"
+            }
+        }
+    ]
+}
