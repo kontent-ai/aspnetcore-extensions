@@ -83,7 +83,7 @@ Package provides a model for webhook deserialization: `WebhookNotification`. Leg
 
 ### Webhook signature verification middleware
 
-This middleware verifies the `X-KC-Signature` header. Returns 401 response if the signature is invalid.
+This middleware verifies the `X-Kontent-ai-Signature` (and the legacy `X-KC-Signature`) header. Returns 401 response if the signature is invalid.
 
 `appsettings.json`:
 
