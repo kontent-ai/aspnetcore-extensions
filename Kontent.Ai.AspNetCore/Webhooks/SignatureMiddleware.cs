@@ -49,7 +49,7 @@ namespace Kontent.Ai.AspNetCore.Webhooks
             request.Body.Seek(0, SeekOrigin.Begin);
 
             var generatedSignature = GenerateHash(content, WebhookOptions.Value.Secret);
-            var signature = request.Headers["X-KC-Signature"].FirstOrDefault();
+            var signature = request.Headers["X-KC-Signature"].FirstOrDefault() ?? request.Headers["X-Kontent-ai-Signature"].FirstOrDefault();
 
             if (generatedSignature != signature)
             {
