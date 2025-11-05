@@ -77,13 +77,13 @@ public void ConfigureServices(IServiceCollection services)
 
 ## Webhooks
 
-Package provides a model for webhook deserialization: `WebhookNotification`. Legacy webhooks are supported via classes `DeliveryWebhookModel` and `ManagementWebhookModel`, to be used with legacy (preview) delivery API and management API triggers respectively. See [Webhooks reference](https://kontent.ai/learn/reference/webhooks-reference/) in Kontent.ai documentation.
+Package provides a model for webhook deserialization: `WebhookNotification`.
 
 ## Middlewares
 
 ### Webhook signature verification middleware
 
-This middleware verifies the `X-Kontent-ai-Signature` (and the legacy `X-KC-Signature`) header. Returns 401 response if the signature is invalid.
+This middleware verifies the `X-Kontent-ai-Signature` header. Returns 401 response if the signature is invalid.
 
 `appsettings.json`:
 
