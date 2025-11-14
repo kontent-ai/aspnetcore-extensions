@@ -1,11 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <LangVersion>latest</LangVersion>
     <Authors>Kontent s.r.o.</Authors>
     <Product>Kontent.ai</Product>
-    <Copyright>© 2022 Kontent s.r.o. All rights reserved.</Copyright>
+    <Copyright>© 2025 Kontent s.r.o. All rights reserved.</Copyright>
     <Description>Kontent.ai ASP.NET Core SDK</Description>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>kai-logo-symbol-color-rgb.png</PackageIcon>

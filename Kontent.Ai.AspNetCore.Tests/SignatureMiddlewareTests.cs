@@ -39,7 +39,7 @@ namespace Kontent.Ai.AspNetCore.Tests
             var options = Options.Create(new WebhookOptions { });
             var middleware = new SignatureMiddleware(null, options);
             var ctx = new DefaultHttpContext();
-            ctx.Request.Headers.Add(headerName, "ABC");
+            ctx.Request.Headers.Append(headerName, "ABC");
 
             // Act
             await middleware.InvokeAsync(ctx);
