@@ -1,11 +1,9 @@
 # ASP.NET Core extensions for Kontent.ai apps
 
-[![NuGet](https://img.shields.io/nuget/vpre/Kontent.Ai.AspNetCore.svg)](https://www.nuget.org/packages/Kontent.Ai.AspNetCore/)
-[![Downloads](https://img.shields.io/nuget/dt/Kontent.Ai.AspNetCore.svg)](https://www.nuget.org/packages/Kontent.Ai.AspNetCore/)
-[![Build & Test](https://github.com/kontent-ai/aspnetcore/actions/workflows/integrate.yml/badge.svg)](https://github.com/aspnetcore/actions/workflows/integrate.yml)
-[![codecov](https://codecov.io/gh/kontent-ai/aspnetcore/branch/master/graph/badge.svg?token=U4Y9PQDW6Q)](https://codecov.io/gh/kontent-ai/aspnetcore)
-[![Stack Overflow](https://img.shields.io/badge/Stack%20Overflow-ASK%20NOW-FE7A16.svg?logo=stackoverflow&logoColor=white)](https://stackoverflow.com/tags/kontent-ai)
-[![Discord](https://img.shields.io/discord/821885171984891914?color=%237289DA&label=Kontent.ai%20Discord&logo=discord)](https://discord.gg/SKCxwPtevJ)
+[![NuGet](https://img.shields.io/nuget/vpre/Kontent.Ai.AspNetCore.svg?style=for-the-badge)](https://www.nuget.org/packages/Kontent.Ai.AspNetCore/)
+[![Downloads](https://img.shields.io/nuget/dt/Kontent.Ai.AspNetCore.svg?style=for-the-badge)](https://www.nuget.org/packages/Kontent.Ai.AspNetCore/)
+[![Stack Overflow](https://img.shields.io/badge/Stack%20Overflow-ASK%20NOW-FE7A16.svg?logo=stackoverflow&logoColor=white&style=for-the-badge)](https://stackoverflow.com/tags/kontent-ai)
+[![Discord](https://img.shields.io/discord/821885171984891914?color=%237289DA&label=Kontent.ai%20Discord&logo=discord&style=for-the-badge)](https://discord.gg/SKCxwPtevJ)
 
 ## Tag Helpers
 
