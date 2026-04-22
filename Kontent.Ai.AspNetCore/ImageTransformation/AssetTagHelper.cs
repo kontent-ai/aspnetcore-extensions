@@ -52,6 +52,44 @@ public class AssetTagHelper : TagHelper
     }
 
     /// <summary>
+    /// Name of an asset rendition to use. When the rendition exists on the asset, its crop is used for <c>src</c>
+    /// and <c>srcset</c>/<c>sizes</c> are skipped; <see cref="Format"/>, <see cref="Quality"/>, <see cref="AutoFormat"/>,
+    /// and <see cref="Compression"/> still layer on top. Currently Kontent.ai supports only the <c>default</c> rendition.
+    /// </summary>
+    [HtmlAttributeName("rendition")]
+    public string? Rendition { get; set; }
+
+    /// <summary>
+    /// Target image format (e.g. <c>webp</c>).
+    /// </summary>
+    [HtmlAttributeName("format")]
+    public ImageFormat? Format { get; set; }
+
+    /// <summary>
+    /// Compression quality for lossy formats (1–100).
+    /// </summary>
+    [HtmlAttributeName("quality")]
+    public int? Quality { get; set; }
+
+    /// <summary>
+    /// Fit transformation mode (<c>clip</c> / <c>scale</c> / <c>crop</c>).
+    /// </summary>
+    [HtmlAttributeName("fit")]
+    public ImageFitMode? Fit { get; set; }
+
+    /// <summary>
+    /// Enables WebP delivery when the browser advertises support.
+    /// </summary>
+    [HtmlAttributeName("auto-format")]
+    public bool AutoFormat { get; set; }
+
+    /// <summary>
+    /// WebP compression mode (<c>lossless</c> / <c>lossy</c>). Only meaningful when the delivered format is WebP.
+    /// </summary>
+    [HtmlAttributeName("compression")]
+    public ImageCompression? Compression { get; set; }
+
+    /// <summary>
     /// Constructor that allows to set global image transformation behavior.
     /// </summary>
     /// <param name="imageTransformationOption">An instance of a configuration object allowing to adjust the image transformation behavior.</param>
@@ -72,43 +110,88 @@ public class AssetTagHelper : TagHelper
         output.TagName = "img";
         output.TagMode = TagMode.SelfClosing;
 
-        var width = context.AllAttributes["width"];
-        var height = context.AllAttributes["height"];
-        var imageUrlBuilder = new ImageUrlBuilder(Asset.Url);
-
-        if (width?.Value != null)
-        {
-            imageUrlBuilder = imageUrlBuilder.WithWidth(Convert.ToDouble(width.Value.ToString()));
-        }
-
-        if (height?.Value != null)
-        {
-            imageUrlBuilder = imageUrlBuilder.WithHeight(Convert.ToDouble(height.Value.ToString()));
-        }
-
         var image = new TagBuilder("img");
+        var rendition = ResolveRendition();
 
-        var responsiveWidths = ResponsiveWidths;
-        if (responsiveWidths is { Length: > 0 } && width?.Value == null && height?.Value == null)
+        if (rendition != null)
         {
-            var srcSet = string.Join(",", responsiveWidths.Select(w => $"{new ImageUrlBuilder(Asset.Url).WithWidth(Convert.ToDouble(w)).Url} {w}w"));
-            image.MergeAttribute("srcset", srcSet);
+            // Rendition owns layout (width/height/fit/crop). Only encoding-level transforms layer on top;
+            // srcset is skipped because a rendition is a single crop, not a set of widths.
+            image.MergeAttribute("src", BuildRenditionUrl(rendition));
+        }
+        else
+        {
+            var explicitWidth = ParseNumeric(context.AllAttributes["width"]?.Value);
+            var explicitHeight = ParseNumeric(context.AllAttributes["height"]?.Value);
+            var responsiveWidths = ResponsiveWidths;
 
-            var sizes = new List<string>();
-            context.Items.Add(SizesCollection, sizes);
-            await output.GetChildContentAsync();
+            if (responsiveWidths is { Length: > 0 } && explicitWidth == null && explicitHeight == null)
+            {
+                var srcSet = string.Join(",", responsiveWidths.Select(w =>
+                    $"{BuildTransformedUrl(w, null)} {w}w"));
+                image.MergeAttribute("srcset", srcSet);
 
-            var s = string.Join(", ", sizes.Concat(new[] { $"{DefaultWidth}px" }));
-            image.MergeAttribute("sizes", s);
+                var sizes = new List<string>();
+                context.Items.Add(SizesCollection, sizes);
+                await output.GetChildContentAsync();
 
-            // Fallback src for clients that don't honor srcset — use the largest declared width.
-            imageUrlBuilder = imageUrlBuilder.WithWidth(responsiveWidths.Max());
+                var s = string.Join(", ", sizes.Concat(new[] { $"{DefaultWidth}px" }));
+                image.MergeAttribute("sizes", s);
+
+                // Fallback src for clients that don't honor srcset — use the largest declared width.
+                image.MergeAttribute("src", BuildTransformedUrl(responsiveWidths.Max(), null));
+            }
+            else
+            {
+                image.MergeAttribute("src", BuildTransformedUrl(explicitWidth, explicitHeight));
+            }
         }
 
-        image.MergeAttribute("src", $"{imageUrlBuilder.Url}");
         var titleToUse = Title ?? Asset.Description ?? string.Empty;
         image.MergeAttribute("alt", titleToUse);
         image.MergeAttribute("title", titleToUse);
         output.MergeAttributes(image);
     }
+
+    private IAssetRendition? ResolveRendition()
+    {
+        if (Asset == null || string.IsNullOrEmpty(Rendition))
+        {
+            return null;
+        }
+        Asset.Renditions.TryGetValue(Rendition, out var rendition);
+        return rendition;
+    }
+
+    private string BuildTransformedUrl(double? width, double? height)
+    {
+        var builder = new ImageUrlBuilder(Asset!.Url);
+        if (width.HasValue) builder.WithWidth(width.Value);
+        if (height.HasValue) builder.WithHeight(height.Value);
+        if (Fit.HasValue) builder.WithFitMode(Fit.Value);
+        ApplyEncodingTransforms(builder);
+        return builder.Url.ToString();
+    }
+
+    private string BuildRenditionUrl(IAssetRendition rendition)
+    {
+        var baseUrl = $"{Asset!.Url}?{rendition.Query}";
+        var extras = new List<string>(4);
+        if (Format.HasValue) extras.Add($"fm={Format.Value.ToString().ToLowerInvariant()}");
+        if (Quality.HasValue) extras.Add($"q={Quality.Value}");
+        if (AutoFormat) extras.Add("auto=format");
+        if (Compression.HasValue) extras.Add($"lossless={(Compression.Value == ImageCompression.Lossless ? "true" : "false")}");
+        return extras.Count > 0 ? $"{baseUrl}&{string.Join("&", extras)}" : baseUrl;
+    }
+
+    private void ApplyEncodingTransforms(ImageUrlBuilder builder)
+    {
+        if (Format.HasValue) builder.WithFormat(Format.Value);
+        if (Quality.HasValue) builder.WithQuality(Quality.Value);
+        if (AutoFormat) builder.WithAutomaticFormat();
+        if (Compression.HasValue) builder.WithCompression(Compression.Value);
+    }
+
+    private static double? ParseNumeric(object? value)
+        => value == null ? null : Convert.ToDouble(value.ToString());
 }

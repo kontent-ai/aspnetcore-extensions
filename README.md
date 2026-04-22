@@ -55,6 +55,41 @@ var app = builder.Build();
 </img-asset>
 ```
 
+#### Supported attributes
+
+| Attribute | Purpose |
+|---|---|
+| `asset` | `IAsset` to render (required). |
+| `title` | Overrides the `alt`/`title` attributes (defaults to `asset.Description`). |
+| `default-width` | Width used as the last entry of the generated `sizes` attribute (default `300`). |
+| `responsive-widths` | Per-tag override for the widths used to build `srcset` (falls back to `ImageTransformationOptions.ResponsiveWidths`). |
+| `rendition` | Name of an asset rendition to apply. Today Kontent.ai supports only `default`. See [Renditions](#renditions) below. |
+| `format` | Target image format (`jpg`, `png`, `png8`, `pjpg`, `gif`, `webp`). |
+| `quality` | Compression quality for lossy formats (`1`–`100`). |
+| `fit` | Fit transformation (`clip`, `scale`, `crop`). |
+| `auto-format` | Enables WebP delivery when the browser advertises support. |
+| `compression` | WebP compression (`lossless` / `lossy`); only meaningful when WebP is delivered. |
+
+Standard HTML `width` and `height` attributes on the `<img-asset>` are honored and translate to `w=`/`h=` query parameters. Setting either one disables `srcset`/`sizes` generation.
+
+#### Renditions
+
+When `rendition="default"` is set and the asset exposes that rendition, its query string is appended to the asset URL to produce `src`, `srcset`/`sizes` are **not** generated (a rendition represents a single chosen crop), and only encoding-level transforms (`format`, `quality`, `auto-format`, `compression`) layer on top. The tag helper's `width`, `height`, and `fit` attributes are ignored because the rendition already defines those.
+
+If the named rendition is not present on the asset, the tag helper silently falls back to the non-rendition path.
+
+#### Attribute interaction matrix
+
+| Configuration | `width` / `height` attrs | `ResponsiveWidths` → srcset | `fit` | Encoding (`format`, `quality`, `auto-format`, `compression`) |
+|---|---|---|---|---|
+| No `rendition` | Applied | Generates `srcset` + `sizes` | Applied | Applied to every generated URL |
+| `rendition="default"` (found) | Ignored | Skipped | Ignored | Applied on top of the rendition query |
+| `rendition="…"` (not found) | Applied | Generates `srcset` + `sizes` | Applied | Applied to every generated URL |
+
+#### Custom asset domain
+
+The Delivery SDK handles custom asset domains at mapping time — configure it with `WithCustomAssetDomain("https://cdn.example.com")` when building the `DeliveryClient`. By the time assets reach the tag helper, their `Url` already points at the custom domain, so the `<img>` element emitted by `<img-asset>` uses that domain without any extra configuration in this package.
+
 #### Output
 
 ```html
