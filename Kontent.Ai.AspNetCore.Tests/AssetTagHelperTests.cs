@@ -34,8 +34,6 @@ public class AssetTagHelperTests
 
         Assert.Equal("img", output.TagName);
         Assert.Equal(TagMode.SelfClosing, output.TagMode);
-        // ImageUrlBuilder is mutated in place during srcset generation, so src reflects
-        // the last width iterated (not necessarily the largest). Widths here are ascending.
         Assert.Equal($"{AssetUrl}?w=800", AttrValue(output, "src"));
         Assert.Equal("Coffee", AttrValue(output, "alt"));
         Assert.Equal("Coffee", AttrValue(output, "title"));
@@ -129,6 +127,25 @@ public class AssetTagHelperTests
 
         Assert.Equal(AssetUrl, AttrValue(output, "src"));
         Assert.False(output.Attributes.ContainsName("srcset"));
+    }
+
+    [Fact]
+    public async Task ProcessAsync_SrcAttribute_IsIndependentOfResponsiveWidthsOrder()
+    {
+        var options = Options.Create(new ImageTransformationOptions
+        {
+            ResponsiveWidths = new[] { 1600, 200, 800, 400 } // unordered
+        });
+        var helper = new AssetTagHelper(options)
+        {
+            Asset = new TestAsset { Url = AssetUrl }
+        };
+
+        var context = CreateContext();
+        var output = CreateOutput();
+        await helper.ProcessAsync(context, output);
+
+        Assert.Equal($"{AssetUrl}?w=1600", AttrValue(output, "src"));
     }
 
     [Fact]
