@@ -9,7 +9,6 @@
   <ItemGroup>
     <PackageReference Include="Kontent.Ai.Delivery.Abstractions" />
     <PackageReference Include="Kontent.Ai.Urls" />
-    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" />
     <PackageReference Include="Microsoft.Extensions.Options" />
   </ItemGroup>
 
