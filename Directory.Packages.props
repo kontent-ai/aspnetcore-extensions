@@ -6,6 +6,7 @@
     <!-- Build infrastructure -->
     <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="8.0.0" />
     <!-- Core dependencies -->
+    <PackageVersion Include="Kontent.Ai.Delivery" Version="19.0.0" />
     <PackageVersion Include="Kontent.Ai.Delivery.Abstractions" Version="19.0.0" />
     <PackageVersion Include="Kontent.Ai.Urls" Version="19.0.0" />
     <PackageVersion Include="Microsoft.Extensions.Options" Version="8.0.2" />
