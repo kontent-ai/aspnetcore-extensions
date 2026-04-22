@@ -90,6 +90,47 @@ If the named rendition is not present on the asset, the tag helper silently fall
 
 The Delivery SDK handles custom asset domains at mapping time — configure it with `WithCustomAssetDomain("https://cdn.example.com")` when building the `DeliveryClient`. By the time assets reach the tag helper, their `Url` already points at the custom domain, so the `<img>` element emitted by `<img-asset>` uses that domain without any extra configuration in this package.
 
+### `rich-text` tag helper
+
+Renders Kontent.ai structured rich-text content as HTML in Razor views. Integrates with the Delivery SDK's `IHtmlResolver` for customizing how embedded content, content item links, inline images, and HTML nodes are rendered.
+
+`Program.cs` (optional DI registration):
+
+```csharp
+using Kontent.Ai.AspNetCore.RichText;
+
+builder.Services.AddKontentRichText(resolverBuilder => resolverBuilder
+    .WithContentResolver<Article>(a =>
+        $"<div class='article'><h2>{a.Elements.Title}</h2></div>")
+    .WithContentItemLinkResolver("article", (link, _) =>
+        ValueTask.FromResult($"<a href=\"/articles/{link.ItemId}\">link</a>")));
+```
+
+`View.cshtml`:
+
+```razor
+@* Uses the IHtmlResolver registered in DI (or SDK defaults if none registered). *@
+<rich-text content="@Model.Body" />
+
+@* Per-view resolver override. *@
+<rich-text content="@Model.Body" resolver="@myCustomResolver" />
+```
+
+The tag helper does not emit a `<rich-text>` wrapper — the resolver's HTML is rendered in place of the element.
+
+#### Extension method alternative
+
+For partial views, view components, or scenarios that benefit from an explicit `CancellationToken`:
+
+```razor
+@await Model.Body.ToHtmlContentAsync()
+@await Model.Body.ToHtmlContentAsync(myResolver, ViewContext.HttpContext.RequestAborted)
+```
+
+#### Without DI registration
+
+Both the tag helper and the extension method fall back to `new HtmlResolverBuilder().Build()` when no resolver is provided and none is registered in DI. This uses the SDK's built-in defaults: HTML-encoded text nodes, default inline-image rendering, and diagnostic HTML comments for missing embedded-content and content-item-link resolvers. See the [Delivery SDK documentation](https://github.com/kontent-ai/delivery-sdk-net) for the full `IHtmlResolverBuilder` API.
+
 #### Output
 
 ```html
