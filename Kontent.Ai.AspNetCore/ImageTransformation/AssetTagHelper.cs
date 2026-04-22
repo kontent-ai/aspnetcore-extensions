@@ -91,7 +91,7 @@ public class AssetTagHelper : TagHelper
         var responsiveWidths = ResponsiveWidths;
         if (responsiveWidths is { Length: > 0 } && width?.Value == null && height?.Value == null)
         {
-            var srcSet = string.Join(",", responsiveWidths.Select(w => $"{imageUrlBuilder.WithWidth(Convert.ToDouble(w)).Url} {w}w"));
+            var srcSet = string.Join(",", responsiveWidths.Select(w => $"{new ImageUrlBuilder(Asset.Url).WithWidth(Convert.ToDouble(w)).Url} {w}w"));
             image.MergeAttribute("srcset", srcSet);
 
             var sizes = new List<string>();
@@ -100,6 +100,9 @@ public class AssetTagHelper : TagHelper
 
             var s = string.Join(", ", sizes.Concat(new[] { $"{DefaultWidth}px" }));
             image.MergeAttribute("sizes", s);
+
+            // Fallback src for clients that don't honor srcset — use the largest declared width.
+            imageUrlBuilder = imageUrlBuilder.WithWidth(responsiveWidths.Max());
         }
 
         image.MergeAttribute("src", $"{imageUrlBuilder.Url}");
