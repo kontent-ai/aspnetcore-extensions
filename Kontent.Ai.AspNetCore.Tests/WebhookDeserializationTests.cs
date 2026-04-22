@@ -15,20 +15,20 @@ public class WebhookNotificationTests
         var notification = JsonSerializer.Deserialize<WebhookNotification>(jsonPayload);
 
         Assert.NotNull(notification);
-        Assert.NotNull(notification!.Notifications);
+        Assert.NotNull(notification.Notifications);
         Assert.Single(notification.Notifications);
 
-        var webhookModel = notification.Notifications![0];
+        var webhookModel = notification.Notifications[0];
         Assert.NotNull(webhookModel.Data);
         Assert.NotNull(webhookModel.Message);
 
-        var data = webhookModel.Data!.System;
+        var data = webhookModel.Data.System;
         Assert.NotNull(data);
-        Assert.Equal(Guid.Parse("123e4567-e89b-12d3-a456-426614174000"), data!.Id);
+        Assert.Equal(Guid.Parse("123e4567-e89b-12d3-a456-426614174000"), data.Id);
         Assert.Equal("Test Item", data.Name);
         Assert.Equal("default_workflow", data.Workflow);
 
-        var message = webhookModel.Message!;
+        var message = webhookModel.Message;
         Assert.Equal(Guid.Parse("123e4567-e89b-12d3-a456-426614174000"), message.EnvironmentId);
         Assert.Equal("content_item_variant", message.ObjectType);
         Assert.Equal("published", message.DeliverySlot);

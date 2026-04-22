@@ -20,7 +20,7 @@ public class SignatureMiddlewareTests
         await middleware.InvokeAsync(ctx);
 
         // Assert
-        Assert.Equal(ctx.Response.StatusCode, (int)HttpStatusCode.Unauthorized);
+        Assert.Equal((int)HttpStatusCode.Unauthorized, ctx.Response.StatusCode);
     }
 
     [Theory]
@@ -38,6 +38,6 @@ public class SignatureMiddlewareTests
         await middleware.InvokeAsync(ctx);
 
         // Assert
-        Assert.Equal(ctx.Response.StatusCode, (int)HttpStatusCode.Unauthorized);
+        Assert.Equal((int)HttpStatusCode.Unauthorized, ctx.Response.StatusCode);
     }
 }
