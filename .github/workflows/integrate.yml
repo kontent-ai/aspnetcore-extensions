@@ -2,24 +2,102 @@ name: Build & Test
 
 on:
   push:
-    branches: [ master, vNext ]
+    branches: [ master, vnext, vNext ]
   pull_request:
-    branches: [ master, vNext ]
+    branches: [ master, vnext, vNext ]
 
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
 
     steps:
     - uses: actions/checkout@v4
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: 8.0.x
+        global-json-file: global.json
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
       run: dotnet build --no-restore /p:ContinuousIntegrationBuild=true
     - name: Test
       run: dotnet test --no-build --verbosity normal /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
+
+  pack-validation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      PACKAGE_VERSION: 0.0.0-ci.${{ github.run_number }}
+      PACK_OUTPUT: ./artifacts/pack-validation
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        global-json-file: global.json
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --configuration Release --no-restore /p:ContinuousIntegrationBuild=true
+    - name: Pack release artifacts
+      shell: bash
+      run: |
+        set -euo pipefail
+        mkdir -p "$PACK_OUTPUT"
+
+        dotnet pack Kontent.Ai.AspNetCore.sln \
+          --no-build \
+          --configuration Release \
+          --include-symbols \
+          --output "$PACK_OUTPUT" \
+          /p:ContinuousIntegrationBuild=true \
+          /p:PackageVersion="$PACKAGE_VERSION" \
+          /bl:"$PACK_OUTPUT/pack-validation.binlog"
+    - name: Validate package artifacts
+      shell: bash
+      run: |
+        set -euo pipefail
+
+        expected_nupkgs=(
+          "Kontent.Ai.AspNetCore.${PACKAGE_VERSION}.nupkg"
+        )
+
+        expected_snupkgs=(
+          "Kontent.Ai.AspNetCore.${PACKAGE_VERSION}.snupkg"
+        )
+
+        missing=0
+
+        for package in "${expected_nupkgs[@]}"; do
+          if [ ! -f "${PACK_OUTPUT}/${package}" ]; then
+            echo "Missing expected package: ${package}"
+            missing=1
+          fi
+        done
+
+        for package in "${expected_snupkgs[@]}"; do
+          if [ ! -f "${PACK_OUTPUT}/${package}" ]; then
+            echo "Missing expected symbol package: ${package}"
+            missing=1
+          fi
+        done
+
+        if [ "${missing}" -ne 0 ]; then
+          echo "Pack validation failed. Available artifacts:"
+          ls -la "$PACK_OUTPUT"
+          exit 1
+        fi
+    - name: Upload pack validation artifacts
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: pack-validation-artifacts
+        path: |
+          ./artifacts/pack-validation/*.nupkg
+          ./artifacts/pack-validation/*.snupkg
+          ./artifacts/pack-validation/pack-validation.binlog
+        if-no-files-found: warn
