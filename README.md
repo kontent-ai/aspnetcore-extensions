@@ -130,6 +130,17 @@ builder.Services.AddKontentRichText(resolverBuilder => resolverBuilder
         ValueTask.FromResult($"<a href=\"/articles/{link.ItemId}\">link</a>")));
 ```
 
+When the resolver configuration itself needs DI-resolved services (URL helpers, options, custom route resolvers, etc.), use the overload that exposes `IServiceProvider`:
+
+```csharp
+builder.Services.AddKontentRichText((sp, resolverBuilder) =>
+{
+    var routes = sp.GetRequiredService<IRouteResolver>();
+    resolverBuilder.WithContentItemLinkResolver("article", (link, _) =>
+        ValueTask.FromResult($"<a href=\"{routes.For(link.ItemId)}\">link</a>"));
+});
+```
+
 `View.cshtml`:
 
 ```razor
