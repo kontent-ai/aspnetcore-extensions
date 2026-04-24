@@ -26,11 +26,32 @@ public static class ServiceCollectionExtensions
     {
         ArgumentNullException.ThrowIfNull(services);
 
+        return services.AddKontentRichText(
+            configure is null ? null : (_, builder) => configure(builder));
+    }
+
+    /// <summary>
+    /// Registers an <see cref="IHtmlResolver"/> singleton used by the <c>&lt;rich-text&gt;</c> tag helper and <see cref="RichTextExtensions.ToHtmlContentAsync"/>,
+    /// giving the configuration callback access to the application's <see cref="IServiceProvider"/>.
+    /// </summary>
+    /// <remarks>
+    /// Calling this method replaces any prior <see cref="IHtmlResolver"/> registration. The resolver is built lazily on
+    /// first resolution; the <paramref name="configure"/> callback runs at that time with the root service provider.
+    /// </remarks>
+    /// <param name="services">The service collection.</param>
+    /// <param name="configure">Optional configuration callback that receives the service provider and the builder used to assemble the resolver.</param>
+    /// <returns>The same service collection for chaining.</returns>
+    public static IServiceCollection AddKontentRichText(
+        this IServiceCollection services,
+        Action<IServiceProvider, IHtmlResolverBuilder>? configure)
+    {
+        ArgumentNullException.ThrowIfNull(services);
+
         services.RemoveAll<IHtmlResolver>();
-        services.AddSingleton<IHtmlResolver>(_ =>
+        services.AddSingleton<IHtmlResolver>(sp =>
         {
             var builder = new HtmlResolverBuilder();
-            configure?.Invoke(builder);
+            configure?.Invoke(sp, builder);
             return builder.Build();
         });
         return services;
