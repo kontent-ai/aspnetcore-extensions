@@ -15,9 +15,11 @@ jobs:
         os: [ubuntu-latest, windows-latest]
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
+      with:
+        persist-credentials: false
     - name: Setup .NET
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@v6
       with:
         global-json-file: global.json
     - name: Restore dependencies
@@ -34,9 +36,11 @@ jobs:
       PACKAGE_VERSION: 0.0.0-ci.${{ github.run_number }}
       PACK_OUTPUT: ./artifacts/pack-validation
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
+      with:
+        persist-credentials: false
     - name: Setup .NET
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@v6
       with:
         global-json-file: global.json
     - name: Restore dependencies
@@ -93,7 +97,7 @@ jobs:
         fi
     - name: Upload pack validation artifacts
       if: always()
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: pack-validation-artifacts
         path: |
