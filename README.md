@@ -1,5 +1,12 @@
 # ASP.NET Core extensions for Kontent.ai apps
 
+> [!WARNING]
+> **This repository is deprecated and has moved to the [`kontent-ai/dotnet`](https://github.com/kontent-ai/dotnet) monorepo.**
+>
+> This repository will be archived once **v1.0.0 reaches General Availability (GA)**.
+>
+> Please submit **all new pull requests, issues, and contributions** to the [`kontent-ai/dotnet`](https://github.com/kontent-ai/dotnet) repository. No new development should be started in this repository.
+
 [![NuGet](https://img.shields.io/nuget/vpre/Kontent.Ai.AspNetCore.svg?style=for-the-badge)](https://www.nuget.org/packages/Kontent.Ai.AspNetCore/)
 [![Downloads](https://img.shields.io/nuget/dt/Kontent.Ai.AspNetCore.svg?style=for-the-badge)](https://www.nuget.org/packages/Kontent.Ai.AspNetCore/)
 [![Stack Overflow](https://img.shields.io/badge/Stack%20Overflow-ASK%20NOW-FE7A16.svg?logo=stackoverflow&logoColor=white&style=for-the-badge)](https://stackoverflow.com/tags/kontent-ai)
